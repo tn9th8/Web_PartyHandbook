@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{admin/layout-admin.html}">
+
+<body>
+
+	<section class="row" layout:fragment="content">
+
+		<div class="col-6 offset-3 mt-4">
+
+			<form th:action="@{/admin/users/saveOrUpdate}" method="POST" th:object="${user}">
+
+				<div class="card">
+
+					<div class="card-header">
+						<h2 th:if="${user.isEdit}">Edit User</h2>
+
+						<h2 th:if="${!user.isEdit}">Add New User</h2>
+					</div>
+
+
+					<div class="card-body">
+
+						<div class="mb-3">
+							<label for="userId" class="form-label">user ID:</label>
+							<input type="hidden" th:field="${user.isEdit}" name="isEdit">
+							<input type="text" readonly="readonly" class="form-control" th:field="${user.userId}"
+								id="userId" name="userId" aria-describedby="userIdid" placeholder="user Id">
+						</div>
+
+						<div class="mb-3">
+							<label for="email" class="form-label">Email:</label>
+							<input type="text" class="form-control" th:field="${user.email}" id="fullname" name="email"
+								aria-describedby="nameid" placeholder="user Name">
+						</div>
+
+						<div class="mb-3">
+							<label for="username" class="form-label">Full Name:</label>
+							<input type="text" class="form-control" th:field="${user.fullname}" id="fullname"
+								name="fullname" aria-describedby="nameid" placeholder="user Name">
+						</div>
+
+						<div class="mb-3">
+							<label for="phone" class="form-label">phone:</label>
+							<input type="text" class="form-control" th:field="${user.phone}" id="email" name="phone"
+								aria-describedby="nameid" placeholder="user Name">
+						</div>
+
+						<div class="mb-3">
+							<label for="phone" class="form-label">Password:</label>
+							<input type="text" class="form-control" th:field="${user.password}" id="email"
+								name="password" aria-describedby="nameid" placeholder="user Name">
+						</div>
+
+						<div class="mb-3">
+							<label for="phone" class="form-label">Sign-up Date:</label>
+							<input type="text" class="form-control" th:field="${user.signupDate}" id="email"
+								name="signupDate" aria-describedby="nameid" placeholder="user Name">
+						</div>
+
+						<div class="mb-3">
+							<label for="phone" class="form-label">Last Login:</label>
+							<input type="text" class="form-control" th:field="${user.lastLogin}" id="email"
+								name="lastLogin" aria-describedby="nameid" placeholder="user Name">
+						</div>
+
+						<div class="mb-3">
+							<label for="phone" class="form-label">Admin:</label>
+							<input type="text" class="form-control" th:field="${user.isadmin}" id="email" name="isadmin"
+								aria-describedby="nameid" placeholder="user Name">
+						</div>
+					</div>
+
+				</div>
+
+				<div class="card-footer text-muted">
+					<a th:href="@{/admin/users/add}" class="btn btn-secondary"><i class="fas fa-new"></i> New</a> 
+					<a th:href="@{/admin/users}" class="btn btn-success"><i class="fas fa-bars"></i> List users</a>
+
+					<button class="btn btn-primary" type="submit">
+
+
+						<span th:if="${user.isEdit}">Update</span>
+
+						<span th:if="${!user.isEdit}">Save</span>
+
+					</button>
+
+
+
+				</div>
+
+
+
+
+
+			</form>
+
+		</div>
+
+	</section>
+
+</body>
+
+</html>

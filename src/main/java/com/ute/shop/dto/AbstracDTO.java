@@ -1,6 +1,6 @@
 package com.ute.shop.dto;
 
-import java.sql.Date;
+import java.util.Date; // date + time
 import java.util.ArrayList;
 import java.util.List;
 

@@ -1,8 +1,11 @@
 package com.ute.shop.service.impl;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.ute.shop.converter.NewsConverter;
@@ -48,5 +51,40 @@ public class NewsService implements INewsService {
 		newsEntity.setCategory(categoryEntity);
 		newsEntity = newsRepository.save(newsEntity);
 		return newsConverter.toDTO(newsEntity);
+	}
+
+	@Override
+	public void delete(long[] ids) {
+		for(long item: ids) {
+			newsRepository.deleteById(item);
+		}
+		
+	}
+
+	@Override
+	public List<NewsDTO> findAll(Pageable pageable) {
+		List<NewsDTO> results = new ArrayList<>();
+		List<NewsEntity> entities = newsRepository.findAll(pageable).getContent();
+		for (NewsEntity item: entities) {
+			NewsDTO newsDTO = newsConverter.toDTO(item);
+			results.add(newsDTO);
+		}
+		return results; //list rỗng khác null
+	}
+
+	@Override
+	public int totalItem() {
+		return (int) newsRepository.count();
+	}
+
+	@Override
+	public List<NewsDTO> findAll() {
+		List<NewsDTO> results = new ArrayList<>();
+		List<NewsEntity> entities = newsRepository.findAll();
+		for (NewsEntity item: entities) {
+			NewsDTO newsDTO = newsConverter.toDTO(item);
+			results.add(newsDTO);
+		}
+		return results; //list rỗng khác null
 	}
 }

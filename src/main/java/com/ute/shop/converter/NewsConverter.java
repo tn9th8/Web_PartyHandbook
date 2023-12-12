@@ -34,6 +34,7 @@ public class NewsConverter {
 		dto.setModifiedDate(entity.getModifiedDate());
 		dto.setModifiedBy(entity.getModifiedBy());
 		
+		
 		return dto;
 	}
 	

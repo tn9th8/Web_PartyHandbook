@@ -1,7 +1,11 @@
 package com.ute.shop.entity;
 
-import java.sql.Date;
+import java.util.Date; // date + time
 
+import org.springframework.data.annotation.CreatedBy;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedBy;
+import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import jakarta.persistence.*;
@@ -13,14 +17,22 @@ public class BaseEntity {
 	@Id //NOT NULL PRIMARY KEY
 	@GeneratedValue(strategy = GenerationType.IDENTITY) //auto_increment 
 	private Long id; //id bigint //chung tên là id để đồng bộ
+	
 	@Column
-	private Date createdDate; //created_date TIMESTAMP NULL,
-	@Column 
+	@CreatedBy
 	private String createdBy; //created_by VARCHAR(255) NULL,
+	
 	@Column 
-	private Date modifiedDate; //modified_date TIMESTAMP NULL,
-	@Column
+	@CreatedDate
+	private Date createdDate; //created_date TIMESTAMP NULL,
+	
+	@Column 
+	@LastModifiedBy
 	private String modifiedBy; //modified_by VARCHAR(255) NULL
+	
+	@Column
+	@LastModifiedDate
+	private Date modifiedDate; //modified_date TIMESTAMP NULL,
 	
 	public Long getId() {
 		return id;

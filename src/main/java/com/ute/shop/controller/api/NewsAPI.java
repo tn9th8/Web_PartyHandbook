@@ -1,4 +1,4 @@
-package com.ute.shop.api;
+package com.ute.shop.controller.api;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
@@ -17,14 +17,14 @@ import com.ute.shop.api.output.NewsOutput;
 import com.ute.shop.dto.NewsDTO;
 import com.ute.shop.service.INewsService;
 
-//@CrossOrigin
-//@RestController
+@CrossOrigin
+@RestController
 public class NewsAPI {
 
 	@Autowired
 	private INewsService newsService;
 
-	//@GetMapping(value = "news") // /news?page=1&limit=2
+	@GetMapping(value = "news") // /news?page=1&limit=2
 	public NewsOutput showNews(@RequestParam(value = "page", required = false, defaultValue = "1") Integer page, 
 								@RequestParam(value = "limit", required = false, defaultValue = "2") Integer limit) { //không bắt buộc có tham số
 		NewsOutput result = new NewsOutput();
@@ -44,18 +44,18 @@ public class NewsAPI {
 
 	}
 
-	//@PostMapping(value = "news")
+	@PostMapping(value = "news")
 	public NewsDTO createNews(@RequestBody NewsDTO model) {
 		return newsService.save(model);
 	}
 
-	//@PutMapping(value = "news/{id}")
+	@PutMapping(value = "news/{id}")
 	public NewsDTO updateNews(@RequestBody NewsDTO model, @PathVariable("id") long id) {
 		model.setId(id);
 		return newsService.save(model);
 	}
 
-	//@DeleteMapping(value = "news")
+	@DeleteMapping(value = "news")
 	public void deleteNews(@RequestBody long[] ids) {
 		newsService.delete(ids);
 	}
