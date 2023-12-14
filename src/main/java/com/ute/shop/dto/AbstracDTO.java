@@ -13,6 +13,7 @@ public class AbstracDTO<T> {
 	private Date modifiedDate; 
 	private String modifiedBy;
 	private List<T> listResult = new ArrayList<>();
+	private boolean isEdit;
 	
 	public Long getId() {
 		return id;
@@ -49,6 +50,12 @@ public class AbstracDTO<T> {
 	}
 	public void setListResult(List<T> listResult) {
 		this.listResult = listResult;
+	}
+	public boolean getIsEdit() {
+		return isEdit;
+	}
+	public void setIsEdit(boolean isEdit) {
+		this.isEdit = isEdit;
 	}
 }
 //Generic T type: T là đối tượng mình làm việc mà phải truyền vào

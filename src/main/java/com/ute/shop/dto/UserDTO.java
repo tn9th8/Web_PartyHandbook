@@ -15,6 +15,5 @@ public class UserDTO extends AbstracDTO<UserDTO> {
 	private String fullname;
 	private String password;
 	private Integer status;
-	private Long roleId;
 	
 }

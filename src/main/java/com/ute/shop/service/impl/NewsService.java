@@ -29,7 +29,7 @@ public class NewsService implements INewsService {
 	private NewsConverter newsConverter;
 
 	@Override
-	public NewsDTO save(NewsDTO newsDTO) {
+	public void save(NewsDTO newsDTO) {
 		/*
 		 * Thực hiện lưu 1 entity khi insert hoặc update:
 		 * S1: Kiểm tra update/insert, rồi convert dto to entity
@@ -47,15 +47,16 @@ public class NewsService implements INewsService {
 		} else { //ko có id: insert (vì id tự tăng)
 			newsEntity = newsConverter.toEntity(newsDTO);
 		}
+		newsDTO.setCategoryCode("chinh-tri");
 		CategoryEntity categoryEntity = categoryRepository.findOneByCode(newsDTO.getCategoryCode());
-		newsEntity.setCategory(categoryEntity);
+		newsEntity.setCategory(categoryEntity);		
 		newsEntity = newsRepository.save(newsEntity);
-		return newsConverter.toDTO(newsEntity);
 	}
 
+
 	@Override
-	public void delete(long[] ids) {
-		for(long item: ids) {
+	public void delete(List<Long> ids) {
+		for(Long item: ids) {
 			newsRepository.deleteById(item);
 		}
 		
@@ -98,4 +99,39 @@ public class NewsService implements INewsService {
 		}
 		return results; //list rỗng khác null
 	}
+
+	@Override
+	public NewsDTO findById(Long id) {
+		NewsDTO newsDTO = new NewsDTO();
+		Optional<NewsEntity> optional = newsRepository.findById(id);
+		if (optional.isPresent()) {
+			NewsEntity newsEntity = optional.get();
+			newsDTO = newsConverter.toDTO(newsEntity); // lấy newsDTO cập nhật lên old
+		}
+//		ProductDto productDto = new ProductDto();
+//		if(optional.isPresent()) {
+//			Product entity = optional.get();
+//			BeanUtils.copyProperties(entity, productDto);
+//			productDto.setCategoryId(entity.getCategory().getCategoryId());
+//			productDto.setIsEdit(false);
+//		}
+		return newsDTO;
+	}
+
+	@Override
+	public List<NewsDTO> findAllByOrderByIdDesc() {
+		List<NewsDTO> results = new ArrayList<>();
+		List<NewsEntity> entities = newsRepository.findAllByOrderByIdDesc();
+		for (NewsEntity item: entities) {
+			NewsDTO newsDTO = newsConverter.toDTO(item);
+			results.add(newsDTO);
+		}
+		return results; //list rỗng khác null
+	}
+
+	@Override
+	public void deleteById(Long id) {
+		newsRepository.deleteById(id);
+	}
+
 }

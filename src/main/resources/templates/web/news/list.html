@@ -5,11 +5,12 @@
 <body>
 	<section class="" layout:fragment="content">
 		<!-- Page header with logo and tagline-->
-		<header class="py-5 bg-danger border-bottom mb-4">
+		<header class="py-5 bg-light border-bottom mb-4">
 			<div class="container">
 				<div class="text-center my-5 ">
-					<h1 class="fw-bolder"><span style="color: white;">Welcome to  Ha Noi Party Handbook!</span></h1>
-					<p class="lead mb-0"><span style="color: white;">Sổ tay Đảng viên Thành ủy Hà Nội phục vụ cho công tác truyền thông và sinh hoạt Đảng</span></p>
+					<h1 class="fw-bolder">Welcome to Ha Noi Party Handbook!</h1>
+					<p class="lead mb-0">Sổ tay Đảng viên Thành ủy Hà Nội phục vụ cho công tác truyền thông và sinh hoạt
+						Đảng</p>
 				</div>
 			</div>
 		</header>
@@ -20,13 +21,19 @@
 				<div class="col-lg-8">
 					<!-- Featured blog post-->
 					<div class="card mb-4">
-						<a th:href="@{/news/single}"><img class="card-img-top" src="https://dummyimage.com/850x350/dee2e6/6c757d.jpg"
-								alt="..." /></a>
+						<a th:href="'/news/' + ${newss[0].id}">
+							<img
+                				th:src="${newss[0].thumbnail != null ?  '/news/images/' +  newss[0].thumbnail : '/images/No-Image.png' }"
+                				alt=""
+                				width="855"
+                				height="400"
+              				/>
+						</a>
 						<div class="card-body">
 							<div class="small text-muted" th:text="${newss[0].createdDate}"></div>
 							<h2 class="card-title" th:text="${newss[0].title}"></h2>
 							<p class="card-text" th:text="${newss[0].shortDescription}"></p>
-							<a class="btn btn-primary" th:href="@{/news/single}">Read more →</a>
+							<a class="btn btn-primary" th:href="@{/news/single/{id}(id=${newss[0].id})}">Read more →</a>
 						</div>
 					</div>
 					<!-- Nested row for non-featured blog posts-->
@@ -34,52 +41,77 @@
 						<div class="col-lg-6">
 							<!-- Blog post-->
 							<div class="card mb-4">
-								<a href="#!"><img class="card-img-top"
-										src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg" alt="..." /></a>
+								<a href="#!">
+										<img
+                							th:src="${newss[1].thumbnail != null ?  '/news/images/' +  newss[1].thumbnail : '/images/No-Image.png' }"
+                							alt=""
+                							width="415"
+                							height="230"
+              							/>
+								</a>
 								<div class="card-body">
-									<div class="small text-muted">January 1, 2023</div>
-									<h2 class="card-title h4">Post Title</h2>
-									<p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-										Reiciendis aliquid atque, nulla.</p>
-									<a class="btn btn-primary" href="#!">Read more →</a>
+									<div class="small text-muted" th:text="${newss[1].createdDate}"></div>
+									<h2 class="card-title" th:text="${newss[1].title}"></h2>
+									<p class="card-text" th:text="${newss[1].shortDescription}"></p>
+									<a class="btn btn-primary" th:href="'/news/single/' + ${newss[1].id}">Read more
+										→</a>
 								</div>
 							</div>
 							<!-- Blog post-->
 							<div class="card mb-4">
-								<a href="#!"><img class="card-img-top"
-										src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg" alt="..." /></a>
+								<a href="#!"><img class="card-img-top">
+										<img
+                							th:src="${newss[2].thumbnail != null ?  '/news/images/' +  newss[2].thumbnail : '/images/No-Image.png' }"
+                							alt=""
+                							width="415"
+                							height="230"
+              							/>
+								</a>
 								<div class="card-body">
-									<div class="small text-muted">January 1, 2023</div>
-									<h2 class="card-title h4">Post Title</h2>
-									<p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-										Reiciendis aliquid atque, nulla.</p>
-									<a class="btn btn-primary" href="#!">Read more →</a>
+									<div class="small text-muted" th:text="${newss[2].createdDate}"></div>
+									<h2 class="card-title" th:text="${newss[2].title}"></h2>
+									<p class="card-text" th:text="${newss[2].shortDescription}"></p>
+									<a class="btn btn-primary" th:href="'/news/single/' + ${newss[2].id}">Read more
+										→</a>
 								</div>
 							</div>
 						</div>
 						<div class="col-lg-6">
 							<!-- Blog post-->
 							<div class="card mb-4">
-								<a href="#!"><img class="card-img-top"
-										src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg" alt="..." /></a>
+								<a href="#!"><img class="card-img-top">
+										<img
+                							th:src="${newss[3].thumbnail != null ?  '/news/images/' +  newss[3].thumbnail : '/images/No-Image.png' }"
+                							alt=""
+                							width="415"
+                							height="230"
+              							/>
+										
+								</a>
 								<div class="card-body">
-									<div class="small text-muted">January 1, 2023</div>
-									<h2 class="card-title h4">Post Title</h2>
-									<p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-										Reiciendis aliquid atque, nulla.</p>
-									<a class="btn btn-primary" href="#!">Read more →</a>
+									<div class="small text-muted" th:text="${newss[3].createdDate}"></div>
+									<h2 class="card-title" th:text="${newss[3].title}"></h2>
+									<p class="card-text" th:text="${newss[3].shortDescription}"></p>
+									<a class="btn btn-primary" th:href="'/news/single/' + ${newss[3].id}">Read more
+										→</a>
 								</div>
 							</div>
 							<!-- Blog post-->
 							<div class="card mb-4">
-								<a href="#!"><img class="card-img-top"
-										src="https://dummyimage.com/700x350/dee2e6/6c757d.jpg" alt="..." /></a>
+								<a href="#!"><img class="card-img-top">
+										<img
+                							th:src="${newss[4].thumbnail != null ?  '/news/images/' +  newss[4].thumbnail : '/images/No-Image.png' }"
+                							alt=""
+                							width="415"
+                							height="230"
+              							/>
+								</a>
 								<div class="card-body">
-									<div class="small text-muted">January 1, 2023</div>
-									<h2 class="card-title h4">Post Title</h2>
-									<p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-										Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam.</p>
-									<a class="btn btn-primary" href="#!">Read more →</a>
+									<div class="small text-muted" th:text="${newss[4].createdDate}"></div>
+									<h2 class="card-title" th:text="${newss[4].title}"></h2>
+									<p class="card-text" th:text="${newss[4].shortDescription}"></p>
+									<a class="btn btn-primary" th:href="'/news/single/' + ${newss[4].id}">Read more
+										→</a>
 								</div>
 							</div>
 						</div>
@@ -119,26 +151,20 @@
 							<div class="row">
 								<div class="col-sm-6">
 									<ul class="list-unstyled mb-0">
-										<li><a href="#!">Web Design</a></li>
-										<li><a href="#!">HTML</a></li>
-										<li><a href="#!">Freebies</a></li>
+										<li><a href="#!">Chính trị</a></li>
+										<li><a href="#!">Văn hóa</a></li>
+										<li><a href="#!">Kinh tế</a></li>
 									</ul>
 								</div>
 								<div class="col-sm-6">
 									<ul class="list-unstyled mb-0">
-										<li><a href="#!">JavaScript</a></li>
-										<li><a href="#!">CSS</a></li>
-										<li><a href="#!">Tutorials</a></li>
+										<li><a href="#!">Thể Theo</a></li>
+										<li><a href="#!">Khoa học</a></li>
+										<li><a href="#!">Quân sự</a></li>
 									</ul>
 								</div>
 							</div>
 						</div>
-					</div>
-					<!-- Side widget-->
-					<div class="card mb-4">
-						<div class="card-header">Side Widget</div>
-						<div class="card-body">You can put anything you want inside of these side widgets. They are easy
-							to use, and feature the Bootstrap 5 card component!</div>
 					</div>
 				</div>
 			</div>

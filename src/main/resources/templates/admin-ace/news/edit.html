@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{admin-ace/layout-admin-ace.html}">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+</head>
+
+<body>
+	<div layout:fragment="content" class="main-content">
+		<div class="main-content-inner">
+			<div class="breadcrumbs" id="breadcrumbs">
+				<script type="text/javascript">
+					try {ace.settings.check('breadcrumbs', 'fixed')} catch (e) { }
+				</script>
+				<ul class="breadcrumb">
+					<li>
+						<i class="ace-icon fa fa-home home-icon"></i>
+						<a th:href="@{/admin/news/list}">News</a>
+					</li>
+					<li class="active">Add</li>
+				</ul><!-- /.breadcrumb -->
+			</div>
+
+			<div class="page-content">
+				<div class="col-6 offset-3 mt-4">
+
+					<form th:action="@{/admin/news/save}" method="POST" th:object="${news}">
+
+						<div class="card">
+
+							<div class="card-header">
+								<h2 th:if="${news.id != null}">Edit News</h2>
+								<h2 th:if="${news.id == null}">Add News</h2>
+							</div>
+
+							<div class="card-body">
+
+								<div class="mb-3">
+									<label for="userId" class="form-label">ID</label>
+									<input type="text" readonly="readonly" class="form-control" th:field="${news.id}"
+										id="userId" name="userId" aria-describedby="userIdid" placeholder="Auto">
+								</div>
+								<br>
+
+								<div class="mb-3">
+									<label for="email" class="form-label">Short Description</label>
+									<input type="text" class="form-control" th:field="${news.shortDescription}"
+										id="fullname" name="email" aria-describedby="nameid" placeholder="Please">
+								</div>
+								<br>
+
+								<div class="mb-3">
+									<label for="email" class="form-label">Content</label>
+									<textarea type="text" class="form-control" th:field="${news.content}" id="fullname"
+										name="email" aria-describedby="nameid" placeholder="Please" rows="5"></textarea>
+								</div>
+								<br>
+
+							</div>
+
+						</div>
+
+						<div class="card-footer text-muted" align="center">
+							<a class="btn btn-success" th:href="@{/admin/news/list}">Return</a>
+							<button class="btn btn-primary" type="submit">Save</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

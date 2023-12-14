@@ -10,4 +10,5 @@ import com.ute.shop.entity.NewsEntity;
 @Repository
 public interface INewsRepository extends JpaRepository<NewsEntity, Long> {
 	List<NewsEntity> findTop5ByOrderByIdDesc();
+	List<NewsEntity> findAllByOrderByIdDesc();
 }

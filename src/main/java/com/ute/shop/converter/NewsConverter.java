@@ -28,6 +28,7 @@ public class NewsConverter {
 		dto.setShortDescription(entity.getShortDescription());
 		dto.setThumbnail(entity.getThumbnail());
 		dto.setContent(entity.getContent());
+		dto.setCategoryCode(entity.getCategory().getCode());
 		//attributes of abstract:
 		dto.setCreatedDate(entity.getCreatedDate());
 		dto.setCreatedBy(entity.getCreatedBy());
