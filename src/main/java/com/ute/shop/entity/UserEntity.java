@@ -25,11 +25,14 @@ public class UserEntity extends BaseEntity {
 	private String fullName; // full_name VARCHAR(150) NULL,
 	@Column
 	private Integer status; // status int NOT NULL,
-
+	
 	@ManyToMany()
 	@JoinTable(name = "user_role", 
 			joinColumns = @JoinColumn(name = "user_id"), 
 			inverseJoinColumns = @JoinColumn(name = "role_id"))
 	private List<RoleEntity> roles = new ArrayList<>();
+	
+	@OneToMany(mappedBy = "user") //at CategoryEntity
+	private List<CommentEntity> comments = new ArrayList<>();
 
 }

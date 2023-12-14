@@ -24,7 +24,7 @@ public class CategoryEntity extends BaseEntity {
 	private String name; // name VARCHAR(255) NOT NULL,
 	@Column
 	private String code; // code VARCHAR(255) NOT NULL,
-	@OneToMany(mappedBy = "category") //at CategoryEntity
+	@OneToMany(mappedBy = "category") //at NewsEntity
 	private List<NewsEntity> newss = new ArrayList<>();
 
 }

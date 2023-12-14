@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.ute.shop.api.output.NewsOutput;
+import com.ute.shop.controller.api.output.NewsOutput;
 import com.ute.shop.dto.NewsDTO;
 import com.ute.shop.service.INewsService;
 

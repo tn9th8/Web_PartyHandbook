@@ -13,5 +13,7 @@ public interface INewsService {
 	List<NewsDTO> findAll(Pageable pageable);
 	int totalItem();
 	List<NewsDTO> findAll();
+	
+	List<NewsDTO> findTop5ByOrderByIdDesc();
 }
 // giữ ctrl + rà chuột lại update + open implement

@@ -87,4 +87,15 @@ public class NewsService implements INewsService {
 		}
 		return results; //list rỗng khác null
 	}
+
+	@Override
+	public List<NewsDTO> findTop5ByOrderByIdDesc() {
+		List<NewsDTO> results = new ArrayList<>();
+		List<NewsEntity> entities = newsRepository.findTop5ByOrderByIdDesc();
+		for (NewsEntity item: entities) {
+			NewsDTO newsDTO = newsConverter.toDTO(item);
+			results.add(newsDTO);
+		}
+		return results; //list rỗng khác null
+	}
 }

@@ -2,63 +2,38 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 
 <head>
-	<meta charset="UTF-8">
-	<title>Title</title>
 </head>
 
 <body>
-	<div th:fragment="header">
-		<nav class="navbar navbar-expand-md navbar-dark bg-dark">
-			<div class="container">
-				<a class="navbar-brand" href="index.html">Project Demo for Admin</a>
-				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
-					aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-					<span class="navbar-toggler-icon"></span>
-				</button>
-
-				<div class="collapse navbar-collapse justify-content-end" id="navbarsExampleDefault">
-					<ul class="navbar-nav m-auto">
-						<li class="nav-item active">
-							<a class="nav-link" href="#">Trang chủ<span class="sr-only">(current)</span></a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="category.html">Sản phẩm</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="product.html">Đăng nhập</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="product.html">Trang quản trị</a>
-						</li>
-					</ul>
-
-					<form class="form-inline my-2 my-lg-0">
-						<div class="input-group input-group-sm">
-							<input type="text" class="form-control" placeholder="Search...">
-							<div class="input-group-append">
-								<button type="button" class="btn btn-secondary btn-number">
-									<i class="fa fa-search"></i>
-								</button>
-							</div>
-						</div>
-						<a class="btn btn-success btn-sm ml-3" href="cart.html">
-							<i class="fa fa-shopping-cart"></i> Cart
-							<span class="badge badge-light">3</span>
+	<!-- Header -->
+	<div th:fragment="header" id="navbar" class="navbar navbar-default          ace-save-state">
+		<div class="navbar-container ace-save-state" id="navbar-container">
+			<div class="navbar-header pull-left">
+				<a href="#" class="navbar-brand">
+					<small>
+						<i class="fa fa-leaf"></i>
+						Trang quản trị
+					</small>
+				</a>
+			</div>
+			<div class="navbar-buttons navbar-header pull-right collapse navbar-collapse" role="navigation">
+				<ul class="nav ace-nav">
+					<li class="light-blue dropdown-modal">
+						<a data-toggle="dropdown" href="#" class="dropdown-toggle">
+							Xin chào, ${USERMODEL.fullName}
 						</a>
-					</form>
-				</div>
+					<li class="light-blue dropdown-modal">
+						<a href='<c:url value="/thoat?action=logout"/>'>
+							<i class="ace-icon fa fa-power-off"></i>
+							Thoát
+						</a>
+					</li>
+					</li>
+				</ul>
 			</div>
-		</nav>
-
-		<section class="jumbotron text-center">
-			<div class="container">
-				<h1 class="jumbotron-heading">E-COMMERCE BOOTSTRAP THEME</h1>
-				<p class="lead text-muted mb-0">Simple theme for e-commerce build with Bootstrap 4.0.0. Pages available
-					:
-					home, category, product, cart and contact</p>
-			</div>
-		</section>
+		</div>
 	</div>
+
 </body>
 
 </html>
